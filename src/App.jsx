@@ -1,7 +1,5 @@
 import React from "react";
-
 import { CssBaseline, Container, Stack } from "@mui/material";
-
 import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
 import Definitions from "./components/Definitions";
@@ -10,7 +8,7 @@ import { useState } from "react";
 
 function App() {
     const [mode, setMode] = useState("light");
-    const [font, setFont] = useState("Inter")
+    const [font, setFont] = useState("Inter");
     const [searchTerm, setSearchTerm] = useState("play");
 
     const theme = createTheme({
@@ -60,7 +58,7 @@ function App() {
             },
         },
     });
-    console.log(`Your theme is: \n`, theme);
+    // console.log(`Your theme is: \n`, theme);
     const toggleTheme = () => {
         mode === "light" ? setMode("dark") : setMode("light");
     };
@@ -68,10 +66,19 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline>
-                <NavBar theme={theme} onToggle={toggleTheme} mode={mode} onFont={setFont} />
+                <NavBar
+                    theme={theme}
+                    onToggle={toggleTheme}
+                    mode={mode}
+                    onFont={setFont}
+                />
                 <Container component="main">
                     <Stack spacing={2}>
-                        <SearchBar theme={theme} onSearch={setSearchTerm} searchTerm={searchTerm} />
+                        <SearchBar
+                            theme={theme}
+                            onSearch={setSearchTerm}
+                            searchTerm={searchTerm}
+                        />
 
                         <Definitions
                             searchTerm={searchTerm}
