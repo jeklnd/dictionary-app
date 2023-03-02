@@ -15,7 +15,7 @@ export default function SearchBar({ theme, onSearch, searchTerm }) {
             onSubmit={(e) => {
                 e.preventDefault();
                 onSearch(e.target.elements.searchInput.value);
-                console.log("your search term is " + searchTerm);
+                // console.log("your search term is " + searchTerm);
             }}
         >
             <TextField
@@ -69,7 +69,7 @@ export default function SearchBar({ theme, onSearch, searchTerm }) {
             onSubmit={(e) => {
                 e.preventDefault();
                 onSearch(e.target.elements.searchInput.value);
-                console.log("your search term is " + searchTerm);
+                // console.log("your search term is " + searchTerm);
             }}
         >
             <TextField
