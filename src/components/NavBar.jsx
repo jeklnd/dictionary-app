@@ -6,14 +6,19 @@ import {
     Toolbar,
     Divider,
     Switch,
+    IconButton,
 } from "@mui/material";
-import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
+import AutoStoriesOutlinedIcon from "@mui/icons-material/AutoStoriesOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import BasicMenu from "./BasicMenu";
+import FontMenu from "./FontMenu";
 
-export default function NavBar({ darkTheme, onToggle, theme }) {
+export default function NavBar({ theme, onToggle, mode, onFont }) {
     return (
-        <AppBar position="sticky" elevation={0} color="default">
+        <AppBar
+            position="sticky"
+            elevation={0}
+            sx={{ backgroundColor: theme.palette.background.paper }}
+        >
             <Container>
                 <Toolbar>
                     <Box
@@ -23,15 +28,12 @@ export default function NavBar({ darkTheme, onToggle, theme }) {
                             alignItems: "center",
                         }}
                     >
-                        <MenuBookOutlinedIcon
-                            sx={
-                                theme.palette.mode === "light"
-                                    ? { color: theme.palette.grey[600] }
-                                    : { color: theme.palette.secondary.main }
-                            }
+                        <AutoStoriesOutlinedIcon
+                            sx={{ color: theme.palette.grey[600] }}
+                            fontSize="large"
                         />
                     </Box>
-                    <BasicMenu theme={theme} />
+                    <FontMenu theme={theme} onFont={onFont} mode={mode}/>
                     <Divider
                         orientation="vertical"
                         variant="middle"
@@ -39,12 +41,13 @@ export default function NavBar({ darkTheme, onToggle, theme }) {
                     />{" "}
                     <Switch
                         color="secondary"
-                        checked={theme === darkTheme}
+                        checked={mode === "dark"}
                         onChange={onToggle}
                         sx={{
                             "& .MuiSwitch-thumb": {
                                 width: "0.75rem",
                                 height: "0.75rem",
+                                color: "#fff !important",
                             },
                             "& .MuiButtonBase-root": {
                                 transform: "translate(4.5px, 3.7px)",
@@ -54,13 +57,15 @@ export default function NavBar({ darkTheme, onToggle, theme }) {
                             },
                         }}
                     />
-                    <DarkModeOutlinedIcon
-                        sx={
-                            theme.palette.mode === "light"
-                                ? { color: theme.palette.grey[600] }
-                                : { color: theme.palette.secondary.main }
-                        }
-                    />
+                    <IconButton checked={mode === "dark"} onClick={onToggle}>
+                        <DarkModeOutlinedIcon
+                            sx={
+                                theme.palette.mode === "light"
+                                    ? { color: theme.palette.grey[600] }
+                                    : { color: theme.palette.secondary.main }
+                            }
+                        />
+                    </IconButton>
                 </Toolbar>
             </Container>
         </AppBar>
