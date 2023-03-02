@@ -22,10 +22,10 @@ export default function Definitions({ searchTerm, mode, onClick, theme }) {
                         new Audio(response.data[0].phonetics[0].audio)
                 );
                 setState("default");
-                console.log(
-                    `The response from the server is:\n`,
-                    response.data
-                );
+                // console.log(
+                //     `The response from the server is:\n`,
+                //     response.data
+                // );
             })
             .catch((error) => {
                 console.log(error);
